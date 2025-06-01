@@ -1,0 +1,15 @@
+{
+  "wallet": "TX7gqk5Nv1JkW7L5TqE8xZqXcF1pGcUzwH",
+  "total_eligible_ocos": 7800,
+  "max_usdt_claimable": 273.00,
+  "tx_log": [
+    {
+      "tx_hash": "0xabc123...",
+      "date": "2022-04-12T14:50:00Z",
+      "amount_ocos": 7800,
+      "amount_usdt": 273.00
+    }
+  ],
+  "snapshot_hash": "sha256:7c61db7a9ef...",
+  "burn_status": "pending"
+}
