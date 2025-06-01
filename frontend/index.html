@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCOS Avtomatiq SWAP - TR-20</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Deeper, richer dark gradient for a premium feel */
+            background: linear-gradient(135deg, #0a0e1a, #1a202c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2.5rem; /* Increased padding for overall spaciousness */
+            box-sizing: border-box;
+        }
+        /* Enhanced scrollbar for a sleek look */
+        ::-webkit-scrollbar {
+            width: 12px; /* Slightly wider scrollbar */
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a202c; /* Matches body background */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3a4155; /* Darker thumb */
+            border-radius: 10px;
+            border: 3px solid #1a202c; /* Thicker border to match background */
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5a6175; /* Lighter on hover */
+        }
+        /* Custom class for arrow rotation */
+        .rotate-90 {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="text-gray-100 antialiased">
+
+<div class="w-full max-w-lg bg-gray-900 bg-opacity-85 backdrop-blur-xl p-12 rounded-3xl shadow-2xl border border-gray-700 transform transition-all duration-300 ease-in-out hover:shadow-3xl">
+    <div class="text-center mb-12">
+        <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-600 to-pink-700 mb-4 tracking-tight">
+            OCOS SWAP <span class="text-3xl font-bold text-gray-400">- TR-20</span>
+        </h1>
+        <p class="text-gray-300 text-xl font-medium leading-relaxed">Qabaqcıl və Təhlükəsiz Mübadilə Platforması</p>
+    </div>
+
+    <div id="wallet-connect-section" class="text-center transition-all duration-700 ease-in-out">
+        <p class="text-gray-200 mb-10 text-2xl font-semibold">Cüzdanınızı Bağlayın və Mübadiləyə Başlayın.</p>
+        <button id="connect-wallet-btn"
+                class="w-full py-6 px-10 bg-gradient-to-r from-blue-700 to-purple-800 text-white font-extrabold text-2xl rounded-xl shadow-xl hover:from-blue-800 hover:to-purple-900 transition duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-70">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline-block mr-3 align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m2 4a6 6 0 01-6 6H9a4 4 0 01-4-4V7a2 2 0 012-2m10 0a2 2 0 012 2v4a4 4 0 01-4 4H9a2 2 0 01-2-2m2-2a4 4 0 014-4h4m-8 4a2 2 0 012-2m-2 2a4 4 0 014-4h4c.134 0 .267.02.393.06a11.384 11.384 0 002.93 2.93c.04.126.06.259.06.393v4c0 .896-.393 1.768-1.03 2.407z" />
+            </svg>
+            Cüzdanı Bağla
+        </button>
+        <p id="connection-status" class="mt-6 text-base text-gray-500 hidden">Bağlantı Qurulur...</p>
+    </div>
+
+    <div id="swap-section" class="hidden transition-all duration-700 ease-in-out opacity-0">
+        <h2 class="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-br from-green-500 to-blue-600 mb-12 tracking-tight">
+            Avtomatiq Mübadilə
+        </h2>
+
+        <div class="mb-10">
+            <label for="from-amount" class="block text-gray-300 text-lg font-semibold mb-4">Göndərilən Məbləğ</label>
+            <div class="relative rounded-xl shadow-inner-lg">
+                <input type="number" id="from-amount" placeholder="0.00"
+                       class="w-full py-5 px-7 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-3 focus:ring-blue-500 text-white text-xl font-medium placeholder-gray-500 transition duration-300 ease-in-out">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-5">
+                    <button class="bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-semibold text-base hover:bg-gray-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        OCOS
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center my-8">
+            <button class="p-4 bg-gray-800 rounded-full border border-gray-700 text-gray-400 hover:bg-gray-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-600 transform hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="mb-12">
+            <label for="to-amount" class="block text-gray-300 text-lg font-semibold mb-4">Alınan Məbləğ</label>
+            <div class="relative rounded-xl shadow-inner-lg">
+                <input type="number" id="to-amount" placeholder="0.00" readonly
+                       class="w-full py-5 px-7 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-3 focus:ring-blue-500 text-white text-xl font-medium placeholder-gray-500 transition duration-300 ease-in-out cursor-not-allowed">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-5">
+                    <button class="bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-semibold text-base hover:bg-gray-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        USDT
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-gray-400 text-base mb-10 font-medium">
+            <p>Təxmini Məzənnə: 1 OCOS ≈ 0.035 USDT</p>
+        </div>
+
+        <button id="perform-swap-btn"
+                class="w-full py-6 px-10 bg-gradient-to-r from-green-600 to-blue-700 text-white font-extrabold text-2xl rounded-xl shadow-xl hover:from-green-700 hover:to-blue-800 transition duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-70">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline-block mr-3 align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Mübadiləni Tamamla
+        </button>
+
+        <div class="mt-16 pt-10 border-t border-gray-700">
+            <button id="toggle-about-btn"
+                    class="w-full flex justify-between items-center text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500 mb-8 focus:outline-none pb-4">
+                Haqqında
+                <svg id="about-arrow-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400 transition-transform duration-300 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+            <div id="about-content" class="hidden text-gray-300 text-base leading-loose space-y-5 transition-all duration-500 ease-in-out overflow-hidden">
+                <p>Bu mübadilə platforması 2021-2023-cü illər ərzində OCOS ilkin satışlarında iştirak etmiş OCOS istifadəçiləri üçün nəzərdə tutulmuşdur. Bu xüsusi imkan, həmin dövrdə əldə edilmiş OCOS tokenlərinin USDT-yə çevrilməsini təmin edir.</p>
+
+                <h4 class="text-xl font-bold text-gray-200">Mübadilə Prosesi Necə Həyata Keçirilir:</h4>
+                <p>Hər bir OCOS tokeni sabit məzənnə ilə <strong>0.035 USDT-yə</strong> çevrilir. Mübadilə əməliyyatı zamanı, istifadəçi tərəfindən USDT alındıqda, müvafiq OCOS tokenləri avtomatik olaraq OCOS likvidlik hovuzundan çıxarılır və <strong>yandırılır (burn)</strong>. Bu proses tokenin dövriyyədən çıxarılmasını və ümumi təklifin azalmasını təmin edir.</p>
+
+                <h4 class="text-xl font-bold text-gray-200">Geri Qaytarma Şansı:</h4>
+                <p>Nəzərə alın ki, bu mübadilə əməliyyatı <strong>geri qaytarılmazdır</strong>. Tokenlər yandırıldığı üçün əməliyyat başa çatdıqdan sonra OCOS tokenlərinin geri qaytarılması və ya mübadilənin ləğvi mümkün deyil. Bu, platformanın sabitliyini və şəffaflığını təmin etmək məqsədi daşıyır. Bütün əməliyyatlar yüksək təhlükəsizlik standartlarına uyğun olaraq həyata keçirilir.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Get references to the sections and buttons
+    const walletConnectSection = document.getElementById('wallet-connect-section');
+    const swapSection = document.getElementById('swap-section');
+    const connectWalletBtn = document.getElementById('connect-wallet-btn');
+    const connectionStatus = document.getElementById('connection-status');
+    const fromAmountInput = document.getElementById('from-amount');
+    const toAmountInput = document.getElementById('to-amount');
+    const performSwapBtn = document.getElementById('perform-swap-btn');
+
+    // Get references for the About section
+    const toggleAboutBtn = document.getElementById('toggle-about-btn');
+    const aboutContent = document.getElementById('about-content');
+    const aboutArrowIcon = document.getElementById('about-arrow-icon');
+
+    // Define the fixed exchange rate
+    const EXCHANGE_RATE = 0.035; // 1 OCOS = 0.035 USDT
+
+    // Simulate wallet connection
+    connectWalletBtn.addEventListener('click', () => {
+        connectionStatus.classList.remove('hidden');
+        connectionStatus.textContent = 'Cüzdan Bağlantısı Yoxlanılır...';
+        connectWalletBtn.disabled = true; // Disable button during connection
+
+        setTimeout(() => {
+            // Simulate successful connection after 2.5 seconds
+            walletConnectSection.classList.add('hidden');
+            swapSection.classList.remove('hidden');
+            // Add opacity for a smooth fade-in effect
+            setTimeout(() => {
+                swapSection.classList.add('opacity-100');
+            }, 50); // Small delay to allow 'hidden' to apply before opacity transition
+
+            connectionStatus.textContent = 'Cüzdan Uğurla Bağlandı!';
+            connectionStatus.classList.add('text-green-500'); // Green text for success
+            connectWalletBtn.disabled = false; // Re-enable if needed for a "disconnect" feature
+        }, 2500); // Slightly longer simulation for effect
+    });
+
+    // Enhanced input change simulation for swap with visual feedback
+    fromAmountInput.addEventListener('input', () => {
+        const fromValue = parseFloat(fromAmountInput.value);
+        if (!isNaN(fromValue) && fromValue > 0) {
+            // Calculate 'to' amount based on the defined exchange rate
+            const calculatedToAmount = (fromValue * EXCHANGE_RATE).toFixed(6);
+            toAmountInput.value = calculatedToAmount;
+            // Add visual cue for updated value (optional)
+            toAmountInput.classList.add('ring-2', 'ring-blue-400');
+            setTimeout(() => {
+                toAmountInput.classList.remove('ring-2', 'ring-blue-400');
+            }, 500);
+        } else {
+            toAmountInput.value = '0.00';
+        }
+    });
+
+    // Handle swap button click with more informative alert
+    performSwapBtn.addEventListener('click', () => {
+        const fromAmount = fromAmountInput.value;
+        const toAmount = toAmountInput.value;
+
+        if (parseFloat(fromAmount) > 0) {
+            // In a real application, this would trigger blockchain transactions
+            alertMessage(`Mübadilə Sorğusu Göndərildi: ${fromAmount} OCOS ${toAmount} USDT üçün. Zəhmət olmasa, cüzdanınızda təsdiqləyin.`, 'info');
+        } else {
+            alertMessage('Xəta: Mübadilə etmək üçün keçərli bir məbləğ daxil edin.', 'error');
+        }
+    });
+
+    // Custom alert message function with improved styling
+    function alertMessage(message, type) {
+        let messageBox = document.getElementById('message-box');
+        if (!messageBox) {
+            messageBox = document.createElement('div');
+            messageBox.id = 'message-box';
+            messageBox.className = 'fixed top-8 left-1/2 -translate-x-1/2 py-4 px-6 rounded-xl shadow-lg text-white z-50 transition-all duration-300 ease-in-out opacity-0';
+            document.body.appendChild(messageBox);
+        }
+
+        messageBox.textContent = message;
+        messageBox.classList.remove('bg-red-500', 'bg-green-500', 'bg-blue-500', 'font-semibold'); // Clear previous styles
+
+        if (type === 'success') {
+            messageBox.classList.add('bg-green-500', 'font-semibold');
+        } else if (type === 'error') {
+            messageBox.classList.add('bg-red-500', 'font-semibold');
+        } else {
+            messageBox.classList.add('bg-blue-500', 'font-semibold');
+        }
+
+        // Show message with slight animation
+        setTimeout(() => {
+            messageBox.classList.remove('opacity-0', '-translate-y-2');
+            messageBox.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+
+        // Hide message after 4 seconds with animation
+        setTimeout(() => {
+            messageBox.classList.remove('opacity-100', 'translate-y-0');
+            messageBox.classList.add('opacity-0', '-translate-y-2');
+            setTimeout(() => {
+                if (messageBox && messageBox.parentNode) {
+                    messageBox.parentNode.removeChild(messageBox); // Ensure it's removed
+                }
+            }, 300);
+        }, 4000);
+    }
+
+    // Toggle About section visibility
+    toggleAboutBtn.addEventListener('click', () => {
+        aboutContent.classList.toggle('hidden');
+        aboutArrowIcon.classList.toggle('rotate-90'); // Rotate arrow for visual feedback
+    });
+
+</script>
+
+</body>
+</html>
