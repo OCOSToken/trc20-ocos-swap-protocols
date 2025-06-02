@@ -1,6 +1,6 @@
 # İSTİFADƏÇİ RƏHBƏRİ – OCOS TRC-20 TƏKRAR TİCARƏT VƏ LİKVDİLİK PROTOKOLU
 
-Bu sənəd, 2021–2023-cü illərdə OCOS TRC-20 tokenlərini əldə etmiş və TRON şəbəkəsində `trc20.ocos.io` platforması üzərindən ticarət etmiş istifadəçilər üçün nəzərdə tutulmuşdur. Yenidən ticarət funksiyası yalnız uyğun şəxslərə təqdim olunur və $25,000,000 USDT likvidlik hovuzu ilə dəstəklənir.
+Bu sənəd, 2021–2023-cü illərdə OCOS TRC-20 tokenlərini əldə etmiş və TRON şəbəkəsində `tron platforması (TQ4VkSbKXB3YUDoD6PZSYmpeuFj6QzCf39) smart kontraktı` üzərindən ticarət etmiş istifadəçilər üçün nəzərdə tutulmuşdur. Yenidən ticarət funksiyası yalnız uyğun şəxslərə təqdim olunur və $25,000,000 USDT likvidlik hovuzu ilə dəstəklənir.
 
 ---
 
